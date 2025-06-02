@@ -1,6 +1,6 @@
 name: Notifikasi Telegram Project CI/CD using Github
 on:
-  deployment_status  # Trigger saat ada status deployment (sukses/gagal)
+  deployment_status  
 
 jobs:
   notify:
@@ -9,8 +9,8 @@ jobs:
       - name: Send Telegram Alert
         uses: appleboy/telegram-action@master
         with:
-          token: ${{ secrets.TELEGRAM_TOKEN }}  # Token bot Telegram
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}   # Chat ID penerima
+          token: ${{ secrets.TELEGRAM_TOKEN }}  
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}   
           message: |
             🚀 Deployment Update:
             Status: ${{ github.event.deployment_status.state }}
