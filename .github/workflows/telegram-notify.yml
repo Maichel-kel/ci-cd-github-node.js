@@ -1,4 +1,4 @@
-name: Notifikasi Telegram Project CI/CD using Github
+name: Telegram Notification
 on:
   deployment_status  
 
