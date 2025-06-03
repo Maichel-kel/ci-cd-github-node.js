@@ -1,19 +1,12 @@
 name: Telegram Notification
-on:
-  deployment_status  
+on: [push]
 
 jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Telegram Alert
-        uses: appleboy/telegram-action@master
+      - uses: appleboy/telegram-action@master
         with:
-          token: ${{ secrets.TELEGRAM_TOKEN }}  
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}   
-          message: |
-            🚀 Deployment Update:
-            Status: ${{ github.event.deployment_status.state }}
-            Repo: ${{ github.repository }}
-            URL: ${{ github.event.deployment_status.target_url }}
-            Commit: ${{ github.sha }}
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: "Build berhasil! 🎉 Commit oleh ${{ github.actor }}"
