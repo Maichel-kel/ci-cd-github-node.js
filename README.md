@@ -11,3 +11,4 @@ Repository untuk project CI/CD menggunakan GitHub Actions dan Node.js
 ```bash
 npm install
 npm test
+contoh perubahan kecil

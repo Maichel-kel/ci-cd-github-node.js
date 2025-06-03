@@ -10,4 +10,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: "Build berhasil! 🎉 Commit oleh ${{ github.actor }}"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9dfd899adc71a95a0c7905bc07978fa687009d54
