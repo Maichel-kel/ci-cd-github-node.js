@@ -12,3 +12,4 @@ Repository untuk project CI/CD menggunakan GitHub Actions dan Node.js
 npm install
 npm test
 contoh perubahan kecil
+\nTest notifikasi
