@@ -1,15 +1,13 @@
-# ci-cd-github-nodejs
+# ci-cd-using-github
 
-Repository untuk project CI/CD menggunakan GitHub Actions dan Node.js
+Repository untuk project CI/CD menggunakan GitHub Actions dan
 
 ## Fitur
 - Automated testing
 - Continuous deployment
-- Notifikasi via Telegram
 
 ## Cara Menjalankan
 ```bash
 npm install
 npm test
 contoh perubahan kecil
-\nTest notifikasi
