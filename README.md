@@ -1,6 +1,6 @@
 # ci-cd-using-github
 
-Repository untuk project CI/CD menggunakan GitHub Actions dan
+Repository untuk project CI/CD menggunakan GitHub Actions
 
 ## Fitur
 - Automated testing
