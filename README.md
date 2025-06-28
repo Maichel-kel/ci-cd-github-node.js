@@ -1,13 +1,40 @@
-# ci-cd-using-github
+# Web Bacaan Node.js
 
-Repository untuk project CI/CD menggunakan GitHub Actions
+Web sederhana untuk menampilkan berbagai bacaan menggunakan Node.js, Express, dan EJS.
 
 ## Fitur
-- Automated testing
-- Continuous deployment
 
-## Cara Menjalankan
+- Daftar bacaan
+- Halaman detail bacaan
+- Halaman tentang
+
+## Instalasi
+
+1. Clone repositori ini
+   ```bash
+   git clone https://github.com/username/web-bacaan-nodejs.git
+   ```
+2. Masuk ke direktori proyek
+   ```bash
+   cd web-bacaan-nodejs
+   ```
+3. Install dependencies
+   ```bash
+   npm install
+   ```
+4. Jalankan server
+   ```bash
+   npm start
+   ```
+5. Buka di browser: http://localhost:3000
+
+## Pengembangan
+
+Untuk mode pengembangan dengan hot reload:
 ```bash
-npm install
-npm test
-contoh perubahan kecil
+npm run dev
+```
+
+## Kontribusi
+
+Silakan buka issue atau pull request jika ingin berkontribusi.
