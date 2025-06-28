@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Beranda</title>
-  <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-  <h1>Selamat Datang<%= user ? ', ' + user.name : '' %>!</h1>
-  <% if (user) { %>
-    <nav>
-      <a href="/categories">Kategori</a>
-      <a href="/library">Perpustakaan Saya</a>
-      <a href="/profile">Profil</a>
-      <a href="/logout">Logout</a>
-    </nav>
-  <% } else { %>
-    <a href="/login">Login</a>
-  <% } %>
-</body>
-</html>
+const express = require('express');
+const router = express.Router();
+
+router.get('/', (req, res) => {
+  res.render('index', { title: 'Beranda' });
+});
+
+router.get('/tentang', (req, res) => {
+  res.render('tentang', { title: 'Tentang Kami' });
+});
+
+module.exports = router;
