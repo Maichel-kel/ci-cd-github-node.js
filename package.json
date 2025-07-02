@@ -4,8 +4,9 @@
   "description": "Web bacaan sederhana dengan Node.js",
   "main": "app.js",
   "scripts": {
-    "start": "node test.js",
-    "halo": "echo Hallo dari script custom!"
+    "deploy": "echo Mulai proses deploy...",
+    "clean": "rm -rf dist",
+    "build": "echo Simulasi proses build..."
   }
   "dependencies": {
     "express": "^4.18.2",
