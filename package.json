@@ -1,15 +1,18 @@
+"scripts": {Add commentMore actions
+  "test": "echo Hello dari Node.js!"
 {
-  "name": "ci-cd-project",
+  "name": "web-bacaan-nodejs",
   "version": "1.0.0",
-  "description": "Project CI/CD menggunakan GitHub Actions dan AWS EC2",
-  "main": "test.js",
+  "description": "Web bacaan sederhana dengan Node.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node test.js",
-    "halo": "echo Hallo dari script custom!",
-    "deploy": "echo Mulai proses deploy ke EC2...",
-    "build": "echo Simulasi proses build selesai!",
-    "clean": "rm -rf dist"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
-  "author": "Maichel & Siska",
-  "license": "ISC"
-}
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.9"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
