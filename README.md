@@ -1,7 +1,6 @@
 # Web Bacaan Node.js
 
-Web sederhana untuk menampilkan berbagai bacaan menggunakan Node.js, Express, dan EJS.
-
+Web sederhana untuk menampilkan berbagai bacaan menggugunakan node.js
 ## Fitur
 
 - Daftar bacaan
