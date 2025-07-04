@@ -4,9 +4,8 @@
   "description": "Web bacaan sederhana dengan Node.js",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "test": "echo Hello dari Node.js!"
+  "start": "node index.js",
+  "build": "echo 'No build step needed'"
   },
   "dependencies": {
     "express": "^4.18.2",
