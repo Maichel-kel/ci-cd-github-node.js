@@ -1,4 +1,4 @@
-    - name: Deploy to Amazon Linux EC2
+- name: Deploy to Amazon Linux EC2
   uses: appleboy/ssh-action@master
   with:
     host: ${{ secrets.EC2_HOST }}
