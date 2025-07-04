@@ -1,9 +1,9 @@
- name: Deploy to Amazon Linux EC2
-  uses: appleboy/ssh-action@master
+    - name: Deploy to Amazon Linux EC2
+  uses: appleboy/ssh-action@main
   with:
-    host: ${{ secrets.AWS_HOST }}
+    host: ${{ secrets.EC2_HOST }}
     username: ec2-user
-    key: ${{ secrets.AWS_KEY }}
+    key: ${{ secrets.EC2_SSH_KEY }}
     script: |
       cd ~/ci-cd-github-node.js
       git pull origin main
