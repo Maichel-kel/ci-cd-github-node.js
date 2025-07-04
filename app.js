@@ -20,11 +20,11 @@ app.use('/bacaan', bacaanRouter);
 
 // Error handling
 app.use((req, res, next) => {
-  res.status(404).render('404', { title: 'Halaman Tidak Ditemukan' });
+  res.status(404).render('404', { title: 'Halaman tidak Ditemukan' });
 });
 
 // Server
 const PORT = process.env.PORT || 3000;
-app.listen(3000, '0.0.0.0', () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server berjalan di port ${PORT}`);
 });
