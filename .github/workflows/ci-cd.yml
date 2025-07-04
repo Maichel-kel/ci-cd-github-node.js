@@ -37,8 +37,8 @@ jobs:
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/aws-project/deploy-to-aws
+          chmod 600 ~/aws-project/deploy-to-aws
           ssh-keyscan -H ${{ secrets.EC2_HOST }}
 
       - name: Deploy to EC2
