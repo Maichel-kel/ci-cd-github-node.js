@@ -1,13 +1,60 @@
-- name: Deploy to EC2
-  uses: appleboy/ssh-action@v1.0.3  # Versi terbaru
-  with:
-    host: ${{ secrets.EC2_HOST }}          # IP address EC2
-    username: ${{ secrets.EC2_USER }}      # Username untuk SSH
-    key: ${{ secrets.EC2_SSH_KEY }}        # Private key
-    port: ${{ secrets.EC2_PORT }}          # SSH port (default 22)
-    script: |                              # Script yang akan dijalankan di EC2
-      echo "Hello from GitHub Actions!"
-      cd /path/to/your/project
-      git pull origin main
-      npm install
-      pm2 restart myapp
+name: Deploy to AWS EC2
+
+# PENJELASAN: Trigger workflow ini akan jalan ketika:
+on:
+  push:
+    branches: [ main ]    # Ada push ke branch main
+  workflow_dispatch:      # Manual trigger dari GitHub UI
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # PENJELASAN: Menggunakan Ubuntu server untuk menjalankan job
+    
+    steps:
+    # STEP 1: Download kode dari repository
+    - name: Checkout code
+      uses: actions/checkout@v4
+      # PENJELASAN: Mengambil semua file dari repository ke GitHub Actions runner
+      
+    # STEP 2: Setup Node.js environment (jika project Node.js)
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+      # PENJELASAN: Install Node.js versi 18 dan cache npm dependencies
+      
+    # STEP 3: Install dependencies dan build project
+    - name: Install dependencies
+      run: |
+        npm ci                    # Install dependencies (lebih cepat dari npm install)
+        npm run build --if-present  # Build project jika ada script build
+      # PENJELASAN: Menyiapkan project untuk production
+    
+    # STEP 4: Deploy ke EC2 menggunakan SSH
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_HOST }}     # IP EC2 dari GitHub Secrets
+        username: ${{ secrets.EC2_USER }} # Username EC2 dari GitHub Secrets
+        key: ${{ secrets.EC2_SSH_KEY }}   # Private SSH key dari GitHub Secrets
+        port: 22                          # Port SSH (default 22)
+        script: |
+          # PENJELASAN: Semua perintah di bawah ini akan dijalankan di EC2
+          
+          # Masuk ke direktori project
+          cd /home/ubuntu/your-project-name
+          
+          # Pull kode terbaru dari GitHub
+          git pull origin main
+          
+          # Install/update dependencies
+          npm ci
+          
+          # Build project (jika diperlukan)
+          npm run build
+          
+          # Restart aplikasi menggunakan PM2
+          pm2 restart your-app-name || pm2 start ecosystem.config.js
+          
+          # PENJELASAN: || artinya "atau", jadi jika restart gagal, akan menjalankan start
