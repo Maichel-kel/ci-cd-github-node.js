@@ -2,24 +2,14 @@
   "version": 2,
   "builds": [
     {
-HEAD
-      "src": "package.json",
-
       "src": "index.js",
-10a90bc6912d38a3fc81618d65d92d96d9cb82ec
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-HEAD
-      "dest": "/"
-    }
-  ]
-}
       "dest": "/index.js"
     }
   ]
 }
-10a90bc6912d38a3fc81618d65d92d96d9cb82ec

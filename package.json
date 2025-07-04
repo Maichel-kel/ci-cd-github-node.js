@@ -1,12 +1,18 @@
 {
-  "name": "maich",
+  "name": "web-bacaan-nodejs",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Web bacaan sederhana dengan Node.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo Hello dari Node.js!"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.9"
+  },
+  "devDependencies": {
+  "nodemon": "^3.0.2"
+}
 }
