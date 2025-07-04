@@ -1,11 +1,13 @@
-- name: Deploy to Amazon Linux EC2
-  uses: appleboy/ssh-action@master
+- name: Deploy to EC2
+  uses: appleboy/ssh-action@v1.0.3  # Versi terbaru
   with:
-    host: ${{ secrets.AWS_HOST }}
-    username: ec2-user
-    key: ${{ secrets.AWS_KEY }}
-    script: |
-      cd ~/ci-cd-github-node.js
+    host: ${{ secrets.EC2_HOST }}          # IP address EC2
+    username: ${{ secrets.EC2_USER }}      # Username untuk SSH
+    key: ${{ secrets.EC2_SSH_KEY }}        # Private key
+    port: ${{ secrets.EC2_PORT }}          # SSH port (default 22)
+    script: |                              # Script yang akan dijalankan di EC2
+      echo "Hello from GitHub Actions!"
+      cd /path/to/your/project
       git pull origin main
       npm install
-      pm2 restart myapp || pm2 start index.js --name myapp
+      pm2 restart myapp
