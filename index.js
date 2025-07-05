@@ -1,12 +1,10 @@
 const express = require('express');
-const router = express.Router();
+const app = express();
 
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Beranda' });
+app.get('/', (req, res) => {
+  res.send('Hello from EC2!');
 });
 
-router.get('/tentang', (req, res) => {
-  res.render('tentang', { title: 'Tentang Kami' });
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
 });
-
-module.exports = router;
