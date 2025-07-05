@@ -1,0 +1,50 @@
+name: Deploy to AWS EC2
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build project (jika ada)
+      run: npm run build
+
+    # ===== DEPLOY KE EC2 =====
+    - name: Setup SSH and Deploy
+      env:
+        EC2_HOST: ${{ secrets.EC2_HOST }}
+        EC2_USER: ${{ secrets.EC2_USER }}
+        SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+      run: |
+        # Setup SSH
+        mkdir -p ~/.ssh
+        echo "$SSH_KEY" > ~/.ssh/deploy_key.pem
+        chmod 600 ~/.ssh/deploy_key.pem
+        echo "$EC2_HOST ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkm5a2mg..." >> ~/.ssh/known_hosts
+        
+        # Transfer file via RSYNC
+        rsync -avz --delete -e "ssh -i ~/.ssh/deploy_key.pem -o StrictHostKeyChecking=no" \
+          ./ $EC2_USER@$EC2_HOST:/home/$EC2_USER/app/
+        
+        # Eksekusi perintah di server
+        ssh -i ~/.ssh/deploy_key.pem -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST "
+          cd /home/$EC2_USER/app && \
+          npm install --production && \
+          pm2 restart ecosystem.config.js
+        "

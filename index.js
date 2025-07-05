@@ -1,3 +1,4 @@
+ HEAD
 const express = require('express');
 const app = express();
 
@@ -21,3 +22,14 @@ const PORT = 3000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
 });
+=======
+const express = require('express');
+const router = express.Router();
+
+// Halaman utama
+router.get('/', (req, res) => {
+  res.render('index', { title: 'Beranda' });
+});
+
+module.exports = router;
+8ca8c751bc79c23ba16487b67381ff83d6781dcd
