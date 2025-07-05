@@ -4,7 +4,7 @@
   "description": "Web bacaan sederhana dengan Node.js",
   "main": "app.js",
   "scripts": {
-  "start": "node index.js",
+  "start": "node app.js",
   "build": "echo 'No build step needed'"
   },
   "dependencies": {
